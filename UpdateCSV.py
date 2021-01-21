@@ -157,6 +157,10 @@ def update_ticket_flights():
 def update_flights():
     def update_row_flights(row):
         if row[0] in valid_flight_ids:
+            row[2] = row[2][:-3]
+            row[3] = row[3][:-3]
+            row[8] = row[8][:-3]
+            row[9] = row[9][:-3]
             return row
         return ""
 
@@ -167,7 +171,7 @@ def update_all_csv_files():
     # update_aircrafts()
     # update_airports()
     # update_tickets()
-    update_bookings()
+    # update_bookings()
     # update_tickets_2()
     # update_boarding_passes()
     # update_flights()

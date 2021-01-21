@@ -25,23 +25,23 @@ CREATE TABLE boarding_passes
 
 CREATE TABLE bookings
 (
-    book_ref     CHAR(6) PRIMARY KEY      NOT NULL,
-    book_date    TIMESTAMP WITH TIME ZONE NOT NULL,
-    total_amount NUMERIC(10, 2)           NOT NULL
+    book_ref     CHAR(6) PRIMARY KEY NOT NULL,
+    book_date    TIMESTAMP           NOT NULL,
+    total_amount NUMERIC(10, 2)      NOT NULL
 );
 
 CREATE TABLE flights
 (
-    flight_id           VARCHAR(10) PRIMARY KEY  NOT NULL,
-    flight_no           CHAR(6)                  NOT NULL,
-    scheduled_departure TIMESTAMP WITH TIME ZONE NOT NULL,
-    scheduled_arrival   TIMESTAMP WITH TIME ZONE NOT NULL,
-    departure_airport   CHAR(3)                  NOT NULL,
-    arrival_airport     CHAR(3)                  NOT NULL,
-    status              VARCHAR(20)              NOT NULL,
-    aircraft_code       CHAR(3)                  NOT NULL,
-    actual_departure    TIMESTAMP WITH TIME ZONE NULL,
-    actual_arrival      TIMESTAMP WITH TIME ZONE NULL
+    flight_id           VARCHAR(10) PRIMARY KEY NOT NULL,
+    flight_no           CHAR(6)                 NOT NULL,
+    scheduled_departure TIMESTAMP               NOT NULL,
+    scheduled_arrival   TIMESTAMP               NOT NULL,
+    departure_airport   CHAR(3)                 NOT NULL,
+    arrival_airport     CHAR(3)                 NOT NULL,
+    status              VARCHAR(20)             NOT NULL,
+    aircraft_code       CHAR(3)                 NOT NULL,
+    actual_departure    TIMESTAMP NULL,
+    actual_arrival      TIMESTAMP NULL
 );
 
 CREATE TABLE seats
