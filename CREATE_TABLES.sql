@@ -9,7 +9,7 @@ CREATE TABLE aircrafts
 CREATE TABLE airports
 (
     airport_code CHAR(3)     NOT NULL,
-    airport_name VARCHAR(30) NOT NULL,
+    airport_name VARCHAR(50) NOT NULL,
     city         VARCHAR(30) NOT NULL,
     coordinates  POINT       NOT NULL,
     timezone     TEXT        NOT NULL,
