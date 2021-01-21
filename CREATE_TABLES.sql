@@ -48,7 +48,8 @@ CREATE TABLE flights
     actual_arrival      TIMESTAMP NULL,
     PRIMARY KEY (flight_id),
     INDEX (departure_airport),
-    INDEX (arrival_airport)
+    INDEX (arrival_airport),
+    INDEX (aircraft_code)
 );
 
 CREATE TABLE seats
@@ -97,6 +98,9 @@ ALTER TABLE flights
 
 ALTER TABLE flights
     ADD FOREIGN KEY (arrival_airport) REFERENCES airports (airport_code) ON DELETE CASCADE;
+
+ALTER TABLE flights
+    ADD FOREIGN KEY (aircraft_code) REFERENCES aircrafts (aircraft_code) ON DELETE CASCADE;
 
 ALTER TABLE ticket_flights
     ADD FOREIGN KEY (flight_id) REFERENCES flights (flight_id) ON DELETE CASCADE;
