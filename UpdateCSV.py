@@ -34,6 +34,8 @@ valid_ticket_nos = ['0005432034627', '0005432034628', '0005432034629', '00054320
                     '0005435653907', '0005435706114', '0005435706115', '0005435767739', '0005435767874',
                     '0005435788796', '0005435790266', '0005435790267', '0005435808109', '0005435838975']
 
+valid_flight_ids = []
+
 
 # К каждой строке из таблицы 'table_name' применяется функция 'row_updater'
 # Затем обновленная таблица сохраняется в папку 'airtrans_new'
@@ -110,13 +112,25 @@ def update_boarding_passes():
     update_table('boarding_passes', update_row_boarding_passes)
 
 
+# Сокращаем размер таблицы
+def update_ticket_flights():
+    def update_row_ticket_flights(row):
+        if row[0] in valid_ticket_nos:
+            valid_flight_ids.append(row[1])
+            return row
+        return ""
+
+    update_table('ticket_flights', update_row_ticket_flights)
+
+
 def update_all_csv_files():
     # update_aircrafts()
     # update_airports()
     # update_tickets()
     # update_bookings()
     # update_tickets_2()
-    update_boarding_passes()
+    # update_boarding_passes()
+    update_ticket_flights()
 
 
 if __name__ == '__main__':
