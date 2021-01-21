@@ -30,7 +30,7 @@ def update_airports():
         row[2] = json.loads(row[2])["en"]
         return row
 
-    update_table('airports', update_row_airports, 100)
+    update_table('airports', update_row_airports, 200)
 
 
 def update_all_csv_files():
