@@ -16,19 +16,12 @@ def connect_to_airtrans_db():
         cursor.execute(sqlStatement)
         sqlStatement = "USE AIRTRANS"
         cursor.execute(sqlStatement)
-        with open('CREATE_TABLES.sql', mode='r') as initial_sql_script:
+        with open('INIT_DB.sql', mode='r') as initial_sql_script:
             sqlStatements = initial_sql_script.read().split(';')
             for statement in sqlStatements:
                 if len(str.strip(statement)) != 0:
                     cursor.execute(statement)
-            print("database is created")
-
-        with open('INSERT_VALUES.sql', mode='r') as insert_sql_script:
-            sqlStatements = insert_sql_script.read().split(';')
-            for statement in sqlStatements:
-                if len(str.strip(statement)) != 0:
-                    cursor.execute(statement)
-            print("database is filled")
+            print("database is created and filled")
     except Exception as e:
         print("Exeception occured:{}".format(e))
     finally:
