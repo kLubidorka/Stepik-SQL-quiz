@@ -16,12 +16,26 @@ def update_table(table_name, row_updater, row_limit):
             print(f'Processed {line_count} lines.')
 
 
-def update_all_csv_files():
+def update_aircrafts():
     def update_row_aircrafts(row):
         row[1] = json.loads(row[1])["en"]
         return row
 
     update_table('aircrafts', update_row_aircrafts, 100)
+
+
+def update_airports():
+    def update_row_airports(row):
+        row[1] = json.loads(row[1])["en"]
+        row[2] = json.loads(row[2])["en"]
+        return row
+
+    update_table('airports', update_row_airports, 100)
+
+
+def update_all_csv_files():
+    update_aircrafts()
+    update_airports()
 
 
 if __name__ == '__main__':
