@@ -1,2 +1,9 @@
+import csv
+
 if __name__ == '__main__':
-    print("19" < "1A")
+    with open('airtrans_new/bookings.csv', mode='r') as csv_file:
+        valid_book_refs = []
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            valid_book_refs.append(row[0])
+        print(valid_book_refs)
