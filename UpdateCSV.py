@@ -115,6 +115,7 @@ def update_bookings():
     def update_row_bookings(row):
         if row[0] > "001269":
             return ""
+        row[1] = row[1][:-3]
         return row
 
     update_table('bookings', update_row_bookings)
@@ -166,10 +167,11 @@ def update_all_csv_files():
     # update_aircrafts()
     # update_airports()
     # update_tickets()
-    # update_bookings()
+    update_bookings()
     # update_tickets_2()
     # update_boarding_passes()
-    update_flights()
+    # update_flights()
+    pass
 
 
 if __name__ == '__main__':
