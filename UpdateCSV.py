@@ -11,7 +11,9 @@ def update_table(table_name, row_updater):
             writer = csv.writer(csv_output_file, delimiter=',')
             line_count = 0
             for row in csv_reader:
-                writer.writerow(row_updater(row))
+                new_row = row_updater(row)
+                if new_row != "":
+                    writer.writerow(new_row)
                 line_count += 1
             print(f'Processed {line_count} lines.')
 
@@ -44,10 +46,21 @@ def update_tickets():
     update_table('tickets', update_row_tickets)
 
 
+# Сокращаем размер таблицы
+def update_bookings():
+    def update_row_bookings(row):
+        if row[0] > "001269":
+            return ""
+        return row
+
+    update_table('bookings', update_row_bookings)
+
+
 def update_all_csv_files():
-    update_aircrafts()
-    update_airports()
-    update_tickets()
+    # update_aircrafts()
+    # update_airports()
+    # update_tickets()
+    update_bookings()
 
 
 if __name__ == '__main__':
