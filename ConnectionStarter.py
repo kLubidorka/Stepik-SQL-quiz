@@ -19,19 +19,16 @@ def connect_to_airtrans_db():
         with open('CREATE_TABLES.sql', mode='r') as initial_sql_script:
             sqlStatements = initial_sql_script.read().split(';')
             for statement in sqlStatements:
-                if len(statement) != 0:
+                if len(str.strip(statement)) != 0:
                     cursor.execute(statement)
             print("database is created")
 
         with open('INSERT_VALUES.sql', mode='r') as insert_sql_script:
             sqlStatements = insert_sql_script.read().split(';')
             for statement in sqlStatements:
-                if len(statement) != 0:
+                if len(str.strip(statement)) != 0:
                     cursor.execute(statement)
             print("database is filled")
-        # sqlStatement = "INSERT INTO airports VALUES ('YKS', 'Yakutsk Airport', 'Yakutsk', ST_GeomFromText('POINT(129.77099609375 62.0932998657227)'), 'Asia/Yakutsk')"
-        # cursor.execute(sqlStatement)
-        # print("database is filled")
     except Exception as e:
         print("Exeception occured:{}".format(e))
     finally:

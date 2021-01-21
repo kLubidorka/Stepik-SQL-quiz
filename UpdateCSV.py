@@ -163,6 +163,10 @@ def update_flights():
             row[3] = row[3][:-3]
             row[8] = row[8][:-3]
             row[9] = row[9][:-3]
+            # if row[8] == "":
+            #     row[8] = "NULL"
+            # if row[9] == "":
+            #     row[9] = "NULL"
             return row
         return ""
 
@@ -171,12 +175,12 @@ def update_flights():
 
 def update_all_csv_files():
     # update_aircrafts()
-    update_airports()
+    # update_airports()
     # update_tickets()
     # update_bookings()
     # update_tickets_2()
     # update_boarding_passes()
-    # update_flights()
+    update_flights()
     pass
 
 
