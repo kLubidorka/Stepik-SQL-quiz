@@ -4,7 +4,7 @@ import os
 
 def make_table(table_name):
     with open(f'airtrans_new/{table_name}.csv', mode='r') as csv_input_file, \
-            open('sql/INSERT_VALUES.sql', mode='a') as sql_output_file:
+            open('../sql/INSERT_VALUES.sql', mode='a') as sql_output_file:
         csv_reader = csv.reader(csv_input_file, delimiter=',')
         for row in csv_reader:
             if table_name == 'airports':
@@ -21,7 +21,7 @@ def make_table(table_name):
 
 def make_all_insert_scripts():
     try:
-        os.remove('sql/INSERT_VALUES.sql')
+        os.remove('../sql/INSERT_VALUES.sql')
     except OSError:
         pass
     make_table('bookings')
