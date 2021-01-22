@@ -21,7 +21,7 @@ def connect_to_airtrans_db():
         )
         execute_statement(connection, f"CREATE DATABASE IF NOT EXISTS {tablename}")
         execute_statement(connection, f"USE {tablename}")
-        with open('INIT_DB.sql', mode='r') as initial_sql_script:
+        with open('sql/INIT_DB.sql', mode='r') as initial_sql_script:
             sqlStatements = initial_sql_script.read().split(';')
             for statement in sqlStatements:
                 if len(str.strip(statement)) != 0:
