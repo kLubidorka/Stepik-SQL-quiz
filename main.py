@@ -4,10 +4,18 @@ from pymysql.cursors import DictCursor
 tablename = "AIRTRANS"
 
 
-def execute_statement(connection, stmt, commit=False):
-    connection.cursor().execute(stmt)
+def execute_statement(connection, stmt, commit=False, return_result=False):
+    cursor = connection.cursor()
+    cursor.execute(stmt)
     if commit:
         connection.commit()
+    if return_result:
+        return cursor.fetchall()
+
+
+def run_query_from_file(path_to_file, connection):
+    with open(path_to_file, mode='r') as sql_script:
+        return execute_statement(connection, sql_script.read(), True, True)
 
 
 def connect_to_airtrans_db():
@@ -41,7 +49,11 @@ def release_resources(connection):
 
 def main():
     connection = connect_to_airtrans_db()
-    release_resources(connection)
+    try:
+        result = run_query_from_file('sql/tasks/2.sql', connection)
+        print(result)
+    finally:
+        release_resources(connection)
 
 
 if __name__ == '__main__':

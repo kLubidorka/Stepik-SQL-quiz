@@ -180,7 +180,7 @@ def update_all_csv_files():
     # update_bookings()
     # update_tickets_2()
     # update_boarding_passes()
-    update_flights()
+    # update_flights()
     pass
 
 
