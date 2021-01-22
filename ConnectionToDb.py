@@ -31,5 +31,10 @@ def connect_to_airtrans_db():
         connection.close()
 
 
+def main():
+    connection = connect_to_airtrans_db()
+    connection.close()
+
+
 if __name__ == '__main__':
-    connect_to_airtrans_db()
+    main()
