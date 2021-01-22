@@ -2,6 +2,10 @@ import pymysql
 from pymysql.cursors import DictCursor
 
 
+def execute_statement(cursor, stmt):
+    cursor.execute(stmt)
+
+
 def connect_to_airtrans_db():
     try:
         connection = pymysql.connect(
@@ -12,21 +16,18 @@ def connect_to_airtrans_db():
             cursorclass=DictCursor
         )
         cursor = connection.cursor()
-        sqlStatement = "CREATE DATABASE IF NOT EXISTS AIRTRANS"
-        cursor.execute(sqlStatement)
-        sqlStatement = "USE AIRTRANS"
-        cursor.execute(sqlStatement)
+        execute_statement(cursor, "CREATE DATABASE IF NOT EXISTS AIRTRANS")
+        execute_statement(cursor, "USE AIRTRANS")
         with open('INIT_DB.sql', mode='r') as initial_sql_script:
             sqlStatements = initial_sql_script.read().split(';')
             for statement in sqlStatements:
                 if len(str.strip(statement)) != 0:
-                    cursor.execute(statement)
+                    execute_statement(cursor, statement)
             print("database is created and filled")
+        return connection
     except Exception as e:
         print("Exeception occured:{}".format(e))
-    finally:
-        sqlStatement = "DROP DATABASE AIRTRANS"
-        cursor.execute(sqlStatement)
+        execute_statement(cursor, "DROP DATABASE AIRTRANS")
         connection.close()
 
 
