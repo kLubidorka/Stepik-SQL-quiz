@@ -50,7 +50,7 @@ def release_resources(connection):
 def main():
     connection = connect_to_airtrans_db()
     try:
-        result = run_query_from_file('sql/tasks/2.sql', connection)
+        result = run_query_from_file('sql/tasks/1.sql', connection)
         print(result)
     finally:
         release_resources(connection)
