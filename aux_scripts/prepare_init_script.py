@@ -9,7 +9,7 @@ def insert_into_table(table_name):
         for row in csv_reader:
             if table_name == 'airports':
                 sql_output_file.write(
-                    f"INSERT INTO {table_name} VALUES ('{row[0]}', '{row[1]}', '{row[2]}', ST_GeomFromText({row[3]}), '{row[4]}');\n")
+                    f"INSERT INTO {table_name} VALUES ('{row[0]}', '{row[1]}', '{row[2]}', ST_GeomFromText('{row[3]}'), '{row[4]}');\n")
             elif table_name == 'flights':
                 row8 = f"'{row[8]}'" if row[8] != '' else "NULL"
                 row9 = f"'{row[9]}'" if row[9] != '' else "NULL"
@@ -34,5 +34,14 @@ def add_all_insert_scripts():
     insert_into_table('boarding_passes')
 
 
+def prepare_init_db():
+    with open('sql/CREATE_TABLES.sql', mode='r') as create_file, \
+            open('sql/INSERT_VALUES.sql', mode='r') as insert_file, \
+            open('sql/INIT_DB.sql', mode='w') as init_file:
+        init_file.write(create_file.read())
+        init_file.write(insert_file.read())
+
+
 if __name__ == '__main__':
     add_all_insert_scripts()
+    prepare_init_db()
