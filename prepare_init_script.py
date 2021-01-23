@@ -19,7 +19,8 @@ def insert_into_table(table_name):
                 sql_output_file.write(f'INSERT INTO {table_name} VALUES ({str(row)[1:-1]});\n')
 
 
-def add_all_insert_scripts():
+# Добавляем все операции INSERT... в 'INSERT_VALUES.sql' из csv файлов, находящихся в '/airtrans_new'
+def add_all_insert_commands():
     try:
         os.remove('sql/INSERT_VALUES.sql')
     except OSError as e:
@@ -34,6 +35,7 @@ def add_all_insert_scripts():
     insert_into_table('boarding_passes')
 
 
+# Соединяем операции создания таблиц и вставки значений из csv и записываем в итоговый файл 'INIT_DB.sql'
 def prepare_init_db():
     with open('sql/CREATE_TABLES.sql', mode='r') as create_file, \
             open('sql/INSERT_VALUES.sql', mode='r') as insert_file, \
@@ -43,5 +45,5 @@ def prepare_init_db():
 
 
 if __name__ == '__main__':
-    add_all_insert_scripts()
+    add_all_insert_commands()
     prepare_init_db()

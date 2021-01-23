@@ -18,12 +18,13 @@ def run_query_from_file(path_to_file, connection):
         return execute_statement(connection, sql_script.read(), True, True)
 
 
-def connect_to_airtrans_db():
+# Подключаемся к MySql, сервер с базой нужно поднять отдельно
+def connect_to_airtrans_db(host='localhost', user='root', password='password'):
     try:
         connection = pymysql.connect(
-            host='localhost',
-            user='root',
-            password='password',
+            host=host,
+            user=user,
+            password=password,
             charset='utf8mb4',
             cursorclass=DictCursor
         )
@@ -47,14 +48,15 @@ def release_resources(connection):
     connection.close()
 
 
-def main():
+def run_queries():
     connection = connect_to_airtrans_db()
     try:
-        result = run_query_from_file('sql/tasks/1.sql', connection)
+        # место для запуска SQL запросов
+        result = run_query_from_file('sql/tasks/test_script.sql', connection)
         print(result)
     finally:
         release_resources(connection)
 
 
 if __name__ == '__main__':
-    main()
+    run_queries()
