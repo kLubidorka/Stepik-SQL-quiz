@@ -96,7 +96,7 @@ def update_airports():
     def update_row_airports(row):
         # row[1] = json.loads(row[1])["en"]
         # row[2] = json.loads(row[2])["en"]
-        row[3] = "ST_GeomFromText('POINT" + row[3] + "')"
+        row[3] = "POINT" + row[3]
         row[3] = row[3].replace(',', ' ')
         return row
 
@@ -175,7 +175,7 @@ def update_flights():
 
 def update_all_csv_files():
     # update_aircrafts()
-    # update_airports()
+    update_airports()
     # update_tickets()
     # update_bookings()
     # update_tickets_2()
