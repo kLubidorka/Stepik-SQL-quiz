@@ -1,10 +1,8 @@
 # Репозиторий для обновления базы авиаперевозок и отладки SQL запросов
 
-[Ссылка на архив с исходными CSV](https://storage.yandexcloud.net/airtrans-small/airtrans.zip)
-
-## Инфо для команды, разрабатывающей контест SQL-advanced
-
+[Ссылка на архив с исходными CSV](https://storage.yandexcloud.net/airtrans-small/airtrans.zip)  
 База подогнана под MySql и построена в соответствии со [схемой](https://docs.google.com/document/d/1yMQPb-vb5inoBrzqTvxySjssvGjCzX28kbCAWvnSSFk/edit#heading=h.pdif82p685tc).
+## Инфо для команды, разрабатывающей контест SQL-advanced
 
 ### Как поменять настройки генерации таблиц
 Отредактировать `sql/CREATE_TABLES.sql` 
