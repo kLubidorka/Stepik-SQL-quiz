@@ -7,14 +7,14 @@
 ### Как поменять настройки генерации таблиц
 Отредактировать `sql/CREATE_TABLES.sql` 
 ```bash
-python3 ./prepare_init_script.py
+python3 prepare_init_script.py
 ```
 После этого в `sql/INIT_DB.sql` будет записан итоговый код, создающий и заполняющий базу данных
 
 ### Как добавить/изменить данные, которыми заполняются таблицы
 Отредактировать нужный csv файл в папке `airtrans_new`
 ```bash
-python3 ./prepare_init_script.py
+python3 prepare_init_script.py
 ```
 После этого в `sql/INIT_DB.sql` будет записан итоговый код, создающий и заполняющий базу данных
 
