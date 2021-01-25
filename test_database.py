@@ -52,7 +52,7 @@ def run_queries():
     connection = connect_to_airtrans_db()
     try:
         # место для запуска SQL запросов
-        result = run_query_from_file('sql/tasks/2.sql', connection)
+        result = run_query_from_file('sql/solutions/otmena_3.sql', connection)
         print(result)
     finally:
         release_resources(connection)

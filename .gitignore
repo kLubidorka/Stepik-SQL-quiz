@@ -2,6 +2,7 @@
 .idea
 airtrans_old/
 plan.txt
+sql/solutions
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
