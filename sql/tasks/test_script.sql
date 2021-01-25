@@ -1,1 +1,1 @@
-SELECT * FROM aircrafts;
+SELECT flight_no FROM flights WHERE status = "cancelled";
