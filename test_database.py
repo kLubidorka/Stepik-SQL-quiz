@@ -52,7 +52,7 @@ def run_queries():
     connection = connect_to_airtrans_db()
     try:
         # место для запуска SQL запросов
-        result = run_query_from_file('sql/solutions/ubitki_1.sql', connection)
+        result = run_query_from_file('sql/solutions/find_aircraft_1.sql', connection)
         print(result)
     finally:
         release_resources(connection)

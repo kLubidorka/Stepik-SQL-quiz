@@ -175,7 +175,7 @@ def update_flights():
 
 def update_all_csv_files():
     # update_aircrafts()
-    update_airports()
+    # update_airports()
     # update_tickets()
     # update_bookings()
     # update_tickets_2()
